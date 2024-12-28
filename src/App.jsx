@@ -1,6 +1,6 @@
 import React from 'react'
-import Card from './components.Card.jsx'
-import Input from './components/Input.jsx'
+import Card from './components/Card'
+import Input from './components/Input'
 
 const App = () => {
   return (
