@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from './Card'
 import { useRef,useEffect,useState } from 'react'
+import NotFound from './NotFound'
 
 
 const Input = () => {
@@ -41,9 +42,9 @@ Promise.all([fetch(`https://api.github.com/users/${user.value}`),fetch(`https://
   return (
     
     <div className='w-full flex flex-col items-center gap-3 pt-10'>
-    <div  className='border rounded overflow-hidden grid grid-cols-12 text-center w-96'>
-    <input type="text" placeholder='Search a Github User'className='col-span-10 py-2 px-2' ref={inputRef}/>
-    <button className='px-2 bg-[#06B6D4] col-span-2 text-white' onClick={getProfileData}>Search</button>
+    <div  className='border rounded overflow-hidden grid grid-cols-12 text-center mx-2'>
+    <input type="text" placeholder='Search a Github User'className='col-span-9 sm:col-span-10 py-2 px-2' ref={inputRef}/>
+    <button className='px-2 bg-[#06B6D4] col-span-3 sm:col-span-2 text-white' onClick={getProfileData}>Search</button>
     
   </div>
   {profileFound && first? (
@@ -60,14 +61,8 @@ Promise.all([fetch(`https://api.github.com/users/${user.value}`),fetch(`https://
           repo4={repo[3]?.name || 'N/A'}
           repo5={repo[4]?.name || 'N/A'}
         />
-      ): (!profileFound &&           <Card
-        src={"/vite.svg"}
-        name={"No Profile Found"}
-        bio={"Please try searching for a valid GitHub username."}
-        followers={"0"}
-        following={"0"}
-        repos={"0"}
-      />
+      ): (!profileFound &&           
+      <NotFound/>
 )}
 
   </div>
